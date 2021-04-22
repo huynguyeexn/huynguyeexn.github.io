@@ -1,0 +1,21 @@
+html, body{
+    /* font-family: 'Roboto', Verdana, Geneva, Tahoma, sans-serif; */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fffde8;
+}
+.text-bold{
+    font-weight: bold;
+}
+.title{
+    margin: 1rem 0;
+    position: relative;
+}
+.title::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: #868686;
+    bottom: -5px;
+    left: 0;
+}
