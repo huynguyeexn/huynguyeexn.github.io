@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bảng điểm - Nguyễn Ngọc Huy</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css"
+    />
+  </head>
+  <body>
+    <main class="py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header text-white bg-primary">
+                <h4>Bảng điểm</h4>
+                <div class="row">
+                  <div class="col-6">
+                    <b>Chuyên ngành: Thiết kế website (CNTT)</b>
+                    <br />
+                    <b>Sinh viên: Nguyễn Ngọc Huy</b>
+                  </div>
+                  <div class="col-6"></div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div id="bang-diem"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+
+  <script src="https://unpkg.com/gridjs/dist/gridjs.production.min.js"></script>
+  <script defer>
+    let tableValues = [
+      {
+        kyThu: "1",
+        hocKy: "FALL 2019",
+        mon: "Tiếng Anh 1.1",
+        maMon: "ENT1125",
+        soTinChi: "3",
+        diem: "8.1",
+        trangThai: "Đạt",
+      },
+      {
+        kyThu: "1",
+        hocKy: "FALL 2019",
+        mon: "Thiết kế hình ảnh với Photoshop (Adobe Photoshop)",
+        maMon: "MUL1013",
+        soTinChi: "3",
+        diem: "9.1",
+        trangThai: "Đạt",
+      },
+      {
+        kyThu: "1",
+        hocKy: "FALL 2019",
+        mon: "Tin học",
+        maMon: "COM107",
+        soTinChi: "3",
+        diem: "7.0",
+        trangThai: "Đạt",
+      },
+      {
+        kyThu: "1",
+        hocKy: "FALL 2019",
+        mon: "Nhập môn lập trình",
+        maMon: "COM108",
+        soTinChi: "3",
+        diem: "9.0",
+        trangThai: "Đạt",
+      },
+      {
+        kyThu: "1",
+        hocKy: "FALL 2019",
+        mon: "Kỹ năng học tập",
+        maMon: "SKI1014",
+        soTinChi: "3",
+        diem: "7.7",
+        trangThai: "Đạt",
+      },
+      {
+        kyThu: "2",
+        hocKy: "SPRING 2020",
+        mon: "Tiếng Anh 1.2",
+        maMon: "ENT1225",
+        soTinChi: "3",
+        diem: "7.4",
+        trangThai: "Đạt",
+      },
+      {
+        kyThu: "2",
+        hocKy: "SPRING 2020",
+        mon: "Lập trình cơ sở với Javascript",
+        maMon: "WEB1042",
+        soTinChi: "3",
+        diem: "8.5",
+        trangThai: "Đạt",
+      },
+      {
+        kyThu: "2",
+        hocKy: "SPRING 2020",
+        mon: "Cơ sở dữ liệu",
+        maMon: "COM2012",
+        soTinChi: "3",
+        diem: "9.7",
+        trangThai: "Đạt",
+      },
+      {
+        kyThu: "2",
+        hocKy: "SPRING 2020",
+        mon: "Lập trình Java 1",
+        maMon: "MOB1013",
+        soTinChi: "3",
+        diem: "7.7",
+        trangThai: "Đạt",
+      },
+      {
+        kyThu: "2",
+        hocKy: "SPRING 2020",
+        mon: "Xây dựng trang Web",
+        maMon: "WEB1013",
+        soTinChi: "3",
+        diem: "9.1",
+        trangThai: "Đạt",
+      },
+      {
+        kyThu: "3",
+        hocKy: "Summer 2020",
+        mon: "Marketing trên Internet",
+        maMon: "WEB2053",
+        soTinChi: "3",
+        diem: "6.9",
+        trangThai: "Đạt",
+      },
+      {
+        kyThu: "3",
+        hocKy: "Summer 2020",
+        mon: "Lập trình PHP 1",
+        maMon: "WEB2013",
+        soTinChi: "3",
+        diem: "9.9",
+        trangThai: "Đạt",
+      },
+      {
+        kyThu: "3",
+        hocKy: "Summer 2020",
+        mon: "Kỹ thuật trình bày nội dung Web",
+        maMon: "WEB2022",
+        soTinChi: "3",
+        diem: "9.5",
+        trangThai: "Đạt",
+      },
+      {
+        kyThu: "3",
+        hocKy: "Summer 2020",
+        mon: "Tiếng Anh 2.1",
+        maMon: "ENT2125",
+        soTinChi: "3",
+        diem: "8.4",
+        trangThai: "Đạt",
+      },
+      {
+        kyThu: "3",
+        hocKy: "Summer 2020",
+        mon: "Thiết kế web với HTML5&CSS3",
+        maMon: "WEB3023",
+        soTinChi: "3",
+        diem: "8.9",
+        trangThai: "Đạt",
+      },
+      {
+        kyThu: "4",
+        hocKy: "Fall 2020",
+        mon: "Tiếng Anh 2.2",
+        maMon: "ENT2224",
+        soTinChi: "3",
+        diem: "7.9",
+        trangThai: "Đạt",
+      },
+      {
+        kyThu: "4",
+        hocKy: "Fall 2020",
+        mon: "Dự án 1 - Tin",
+        maMon: "PRO1014",
+        soTinChi: "3",
+        diem: "7.8",
+        trangThai: "Đạt",
+      },
+      {
+        kyThu: "4",
+        hocKy: "Fall 2020",
+        mon: "Quản trị website",
+        maMon: "WEB1022",
+        soTinChi: "3",
+        diem: "9.7",
+        trangThai: "Đạt",
+      },
+      {
+        kyThu: "4",
+        hocKy: "Fall 2020",
+        mon: "Dự án mẫu (ngành Thiết kế Web))",
+        maMon: "WEB204",
+        soTinChi: "3",
+        diem: "9.0",
+        trangThai: "Đạt",
+      },
+      {
+        kyThu: "5",
+        hocKy: "Spring 2021",
+        mon: "Kiểm thử cơ bản",
+        maMon: "SOF303",
+        soTinChi: "3",
+        diem: "6.9",
+        trangThai: "Đạt",
+      },
+      {
+        kyThu: "5",
+        hocKy: "Spring 2021",
+        mon: "Front-End Frameworks",
+        maMon: "WEB207",
+        soTinChi: "3",
+        diem: "9.6",
+        trangThai: "Đạt",
+      },
+      {
+        kyThu: "5",
+        hocKy: "Spring 2021",
+        mon: "Lập trình PHP 2",
+        maMon: "WEB3013",
+        soTinChi: "3",
+        diem: "9.6",
+        trangThai: "Đạt",
+      },
+      {
+        kyThu: "5",
+        hocKy: "Spring 2021",
+        mon: "Lập trình JavaScript nâng cao",
+        maMon: "WEB206",
+        soTinChi: "3",
+        diem: "9.8",
+        trangThai: "Đạt",
+      },
+      {
+        kyThu: "5",
+        hocKy: "",
+        mon: "Pháp luật",
+        maMon: "VIE1026",
+        soTinChi: "2",
+        diem: "0.0",
+        trangThai: "Chưa học",
+      },
+      {
+        kyThu: "6",
+        hocKy: "",
+        mon: "Lập trình PHP3",
+        maMon: "WEB4012",
+        soTinChi: "3",
+        diem: "0.0",
+        trangThai: "Chưa học",
+      },
+      {
+        kyThu: "6",
+        hocKy: "",
+        mon: "Kỹ năng làm việc",
+        maMon: "SKI2015",
+        soTinChi: "3",
+        diem: "0.0",
+        trangThai: "Chưa học",
+      },
+      {
+        kyThu: "6",
+        hocKy: "",
+        mon: "Xây dựng trang Web2",
+        maMon: "WEB2033",
+        soTinChi: "3",
+        diem: "0.0",
+        trangThai: "Chưa học",
+      },
+      {
+        kyThu: "7",
+        hocKy: "",
+        mon: "Khởi sự doanh nghiệp",
+        maMon: "SYB301",
+        soTinChi: "3",
+        diem: "0.0",
+        trangThai: "Chưa học",
+      },
+      {
+        kyThu: "7",
+        hocKy: "",
+        mon: "Chính trị",
+        maMon: "VIE1016",
+        soTinChi: "4",
+        diem: "0.0",
+        trangThai: "Chưa học",
+      },
+      {
+        kyThu: "7",
+        hocKy: "",
+        mon: "Giáo dục quốc phòng",
+        maMon: "VIE104",
+        soTinChi: "0",
+        diem: "0.0",
+        trangThai: "Chưa học",
+      },
+      {
+        kyThu: "7",
+        hocKy: "Summer 2021",
+        mon: "Giáo dục thể chất - Vovinam",
+        maMon: "VIE103",
+        soTinChi: "0",
+        diem: "8.3",
+        trangThai: "Đạt",
+      },
+      {
+        kyThu: "7",
+        hocKy: "",
+        mon: "Thực tập tốt nghiệp (TKW)",
+        maMon: "PRO116",
+        soTinChi: "5",
+        diem: "0.0",
+        trangThai: "Chưa học",
+      },
+      {
+        kyThu: "7",
+        hocKy: "",
+        mon: "Dự án tốt nghiệp (TKW)",
+        maMon: "PRO2016",
+        soTinChi: "5",
+        diem: "0.0",
+        trangThai: "Chưa học",
+      },
+    ];
+    
+    
+    new gridjs.Grid({
+      columns: [
+        { id: "kyThu", name: "Kỳ thứ" },
+        { id: "hocKy", name: "Học kỳ" },
+        { id: "mon", name: "Môn học" },
+        { id: "maMon", name: "Mã môn" },
+        { id: "soTinChi", name: "Số tín chỉ" },
+        { id: "diem", name: "Điểm" },
+        { id: "trangThai", name: "Trạng thái", formatter: (cell) => {
+          if(cell === "Đạt"){
+              return gridjs.html(`<span class="badge bg-success">${cell}</span>`)
+          }else if(cell === "Chưa học"){
+              return gridjs.html(`<span class="badge bg-warning">${cell}</span>`)
+          }
+        }},
+      ],
+      data: tableValues,
+      sort: true
+    }).render(document.getElementById("bang-diem"));
+  </script>
+</html>
