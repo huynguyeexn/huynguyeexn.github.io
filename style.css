@@ -14,7 +14,7 @@ p,
   padding: 0;
 }
 aside {
-  background-image: linear-gradient(to left, #83b4b5, #6c599d);
+  background-image: linear-gradient(to left, #689091, #6c599d);
 }
 a {
   color: inherit;
@@ -38,8 +38,15 @@ aside a:hover {
 
 .badge.badge-gradient {
   color: #f8f9fa;
-  background-image: linear-gradient(to right, #83b4b5, #6c599d);
+  background-image: linear-gradient(to right, #689091, #6c599d);
 }
 .text-bold {
   font-weight: bold;
+}
+.quote {
+  border: 1px solid white;
+  text-align: center;
+  padding: 5px;
+  font-family: "Yeseva One", cursive;
+  font-size: 1rem;
 }
