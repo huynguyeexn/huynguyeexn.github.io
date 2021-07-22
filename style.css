@@ -28,6 +28,7 @@ aside a:hover {
   max-width: 100%;
   white-space: normal;
   word-wrap: break-word;
+  cursor: pointer;
 }
 .badge.bg-light {
   color: #6e629f;
